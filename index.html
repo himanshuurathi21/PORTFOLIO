@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Rathi | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body id="top">
+
+<header>
+    <nav>
+        <h1 class="logo">WELCOME.!</h1>
+        <ul>
+            <li><a href="#top" onclick="showSection('hero')">Home</a></li>
+            <li><a href="#about" onclick="showSection('about')">About</a></li>
+            <li><a href="#resume" onclick="showSection('resume')">Resume</a></li>
+            <li><a href="#academics" onclick="showSection('academics')">Academics</a></li>
+            <li><a href="#skills" onclick="showSection('skills')">Skills</a></li>
+            <li><a href="#certifications" onclick="showSection('certifications')">Certificates</a></li>
+            <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
+            <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="hero" class="hero hero-fade-in">
+    <div class="hero-content">
+        <img src="profile.jpg" alt="Himanshu Rathi" class="profile-pic">
+        <div class="hero-text">
+            <h2 id="typing"></h2>
+            <p class="tagline">Aspiring Software Developer | Building Real-World Solutions</p>
+            <div class="hero-boxes">
+                <span><i class="fas fa-code"></i> LEARNING</span>
+                <span><i class="fas fa-hammer"></i> BUILDING</span>
+                <span><i class="fas fa-rocket"></i> GROWING</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="section content-section">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-text">
+        <p>I am a first-year Information Technology student at MIT Academy of Engineering, Alandi, Pune, with a strong interest in technology, problem-solving, and continuous self-improvement.</p>
+        <p>Currently, I am focused on building a strong foundation in programming, computer science fundamentals, and emerging technologies. I enjoy learning new skills, participating in technical activities, and exploring opportunities that help me grow both technically and professionally.</p>
+        <p>Along with academics, I actively contribute to college initiatives, including technical events and digital promotions. Being part of student teams has helped me develop creativity, communication, and collaboration skills.</p>
+        <p>My goal is to become a skilled IT professional who can build impactful technology solutions and continuously adapt to the rapidly evolving tech industry.</p>
+    </div>
+</section>
+
+<section id="resume" class="section content-section" style="padding: 100px 10%; margin: 10px auto;">
+    <h2 class="section-title" style="margin-bottom: 25px;">Resume</h2>
+    <div style="text-align: center; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="Resume.pdf" target="_blank" class="btn" style="padding: 12px 30px; font-size: 1.1rem; letter-spacing: 1px;">
+            <i class="fas fa-eye"></i> VIEW RESUME
+        </a>
+        <a href="Resume.pdf" download="Himanshu_Rathi_Resume" class="btn" style="padding: 12px 30px; font-size: 1.1rem; letter-spacing: 1px;">
+            <i class="fas fa-file-download"></i> DOWNLOAD RESUME
+        </a>
+    </div>
+</section>
+
+<section id="academics" class="section content-section">
+    <h2 class="section-title">Academics</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>B.Tech - MIT AOE Pune (2025-2029)</h3>
+                <p>Information Technology</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>MHT-CET (2025)</h3>
+                <p>94.464 Percentile</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>12th (2025)</h3>
+                <p>79%</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot current"></div>
+            <div class="timeline-content">
+                <h3>10th (2023)</h3>
+                <p>94.20%</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="section gray content-section">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-box">
+        <div class="skill-card">
+            <h3>TECHNICAL</h3>
+            <p>C, Python, HTML, CSS, SQL, GitHub</p>
+        </div>
+        <div class="skill-card">
+            <h3>SOCIAL</h3>
+            <p>Editing, Management, Presentation, Leading</p>
+        </div>
+    </div>
+</section>
+
+<section id="certifications" class="section content-section">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-category">
+        <button onclick="toggleCert('ibm')">IBM ▼</button>
+        <div id="ibm" class="cert-list">
+            <a href="certificates/ibm-data-visualization.jpg" target="_blank">Data Visualization</a>
+            <a href="certificates/ibm-javascript.jpg" target="_blank">JavaScript</a>
+            <a href="certificates/ibm-career-management.jpg" target="_blank">Career Management Essentials</a>
+        </div>
+        <button onclick="toggleCert('anthropic')">Anthropic ▼</button>
+        <div id="anthropic" class="cert-list">
+            <a href="certificates/claude-101.jpg" target="_blank">Claude 101</a>
+            <a href="certificates/ai-fluency-students.jpg" target="_blank">AI Fluency - Students</a>
+            <a href="certificates/ai-fluency-nonprofits.jpg" target="_blank">AI Fluency - Nonprofits</a>
+            <a href="certificates/ai-fluency-framework.jpg" target="_blank">Framework & Foundations</a>
+        </div>
+        <button onclick="toggleCert('cisco')">Cisco ▼</button>
+        <div id="cisco" class="cert-list">
+            <a href="certificates/python-essentials1.jpg" target="_blank">Python Essentials 1</a>
+            <a href="certificates/python-essentials2.jpg" target="_blank">Python Essentials 2</a>
+        </div>
+        <button onclick="toggleCert('hackathon')">Hackathons ▼</button>
+        <div id="hackathon" class="cert-list">
+            <a href="certificates/innovature.jpg" target="_blank">Innovature</a>
+            <a href="certificates/velora.jpg" target="_blank">Velora 1.0</a>
+            <a href="certificates/nexathon.jpg" target="_blank">Nexathon</a>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="section gray content-section">
+    <h2 class="section-title">Projects</h2>
+    <div class="project-container">
+        <div class="project-box">
+            <h3>AUTOBIZ AI</h3>
+            <p>Smart Business Assistant</p>
+            <a href="https://autobiz-business-ai-agent.netlify.app/" target="_blank" class="btn">View Project</a>
+        </div>
+        <div class="project-box">
+            <h3>SPENDWISE</h3>
+            <p>Predictive Finance Dashboard</p>
+            <a href="https://spendwise-eta-khaki.vercel.app/" target="_blank" class="btn">View Project</a>
+        </div>
+        <div class="project-box">
+            <h3>ParkEase</h3>
+            <p>Smart Parking Management System</p>
+            <a href="https://reineaar.github.io/ParkEaseV2/" target="_blank" class="btn">View Project</a>
+        </div>
+        <div class="project-box">
+            <h3>SENTIMETER</h3>
+            <p>Sentiment Analysis Engine</p>
+            <a href="https://sentimeter-sentiment-analysis-engine.streamlit.app/" target="_blank" class="btn">View Project</a>
+        </div>
+        <div class="project-box">
+            <h3>MY PORTFOLIO</h3>
+            <p>Personal Portfolio Website</p>
+            <a href="#top" class="btn">View Project</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section content-section">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-links">
+        <a href="mailto:rathihimanshuu@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://github.com/himanshuurathi21" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.instagram.com/himanshuu_rathi" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://www.linkedin.com/in/himanshu-rathi-72795538b" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+</section>
+
+<footer>
+</footer>
+
+<script>
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.content-section');
+        const hero = document.getElementById('hero');
+        
+        sections.forEach(sec => sec.style.display = 'none');
+        hero.style.display = 'none';
+
+        const activeSection = document.getElementById(sectionId);
+        if(sectionId === 'hero') {
+            activeSection.style.display = 'flex';
+        } else {
+            activeSection.style.display = 'block';
+        }
+    }
+
+    function toggleCert(id){
+        let el=document.getElementById(id);
+        el.style.display=el.style.display==="block"?"none":"block";
+    }
+
+    let text="HIMANSHU SHAILESH RATHI";
+    let i=0;
+    function typing(){
+        if(i<text.length){
+            document.getElementById("typing").innerHTML+=text.charAt(i);
+            i++;
+            setTimeout(typing,80);
+        }
+    }
+
+    window.onload = () => {
+        typing();
+        showSection('hero');
+    };
+</script>
+
+</body>
+</html>
