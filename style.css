@@ -242,27 +242,6 @@ nav a:hover { color: var(--primary); background: rgba(0,173,181,0.08); }
     letter-spacing: 0.3px;
 }
 
-.scroll-hint {
-    position: absolute;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    color: var(--text-muted);
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    animation: bounce 2s infinite;
-}
-.scroll-hint i { font-size: 0.8rem; }
-@keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50%       { transform: translateX(-50%) translateY(6px); }
-}
-
 /* ============================================
    BUTTONS
    ============================================ */
@@ -313,6 +292,15 @@ nav a:hover { color: var(--primary); background: rgba(0,173,181,0.08); }
     box-sizing: border-box;
 }
 .content-section { display: none; }
+
+.section-enter {
+    animation: sectionFadeIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes sectionFadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 .gray {
     background: var(--dark-3);
     border-radius: var(--radius-lg);
@@ -570,6 +558,34 @@ nav a:hover { color: var(--primary); background: rgba(0,173,181,0.08); }
     margin-bottom: 14px;
 }
 
+.project-impact {
+    font-size: 0.78rem;
+    color: var(--primary);
+    margin-bottom: 14px;
+    padding: 6px 10px;
+    background: rgba(0,173,181,0.06);
+    border-radius: var(--radius-sm);
+    border-left: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.project-impact i { font-size: 0.7rem; }
+
+.project-arch {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.03);
+    border-radius: var(--radius-sm);
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.project-arch i { font-size: 0.65rem; color: var(--primary); }
+
 .project-stack {
     display: flex;
     flex-wrap: wrap;
@@ -822,6 +838,17 @@ footer .footer-sub { font-size: 0.75rem; }
 }
 .back-to-top.visible { opacity: 1; pointer-events: all; }
 .back-to-top:hover { transform: translateY(-3px); }
+
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+.scroll-progress {
+    position: fixed; top: 0; left: 0;
+    height: 3px; width: 0%;
+    background: linear-gradient(90deg, var(--primary), #22c55e);
+    z-index: 1001;
+    transition: width 0.1s linear;
+}
 
 /* ============================================
    RESPONSIVE — MOBILE
