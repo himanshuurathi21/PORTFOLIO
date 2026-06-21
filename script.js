@@ -1,9 +1,8 @@
-/* ============================================
-   HIMANSHU RATHI PORTFOLIO — script.js
-   ============================================ */
-
-// ── Section visibility ──────────────────────
 function showSection(sectionId) {
+    // Update hash without triggering hashchange event
+    if (location.hash !== '#' + sectionId) {
+        history.pushState(null, '', '#' + sectionId);
+    }
     const sections = document.querySelectorAll('.content-section');
     const hero = document.getElementById('hero');
 
@@ -20,6 +19,12 @@ function showSection(sectionId) {
         // Animate cards in on reveal
         animateIn(activeSection);
     }
+
+    // Trigger section entrance animation (reset + play)
+    activeSection.classList.remove('section-enter');
+    void activeSection.offsetWidth;
+    activeSection.classList.add('section-enter');
+    setTimeout(() => activeSection.classList.remove('section-enter'), 500);
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -130,7 +135,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Hash routing — back/forward support
+    window.addEventListener('hashchange', () => {
+        const id = location.hash.slice(1) || 'hero';
+        showSection(id);
+    });
+
+    // ── Scroll progress bar ───────────────────
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.prepend(progressBar);
+    window.addEventListener('scroll', () => {
+        const h = document.body.scrollHeight - window.innerHeight;
+        progressBar.style.width = h > 0 ? (window.scrollY / h) * 100 + '%' : '0%';
+    });
+
     // Start app
     typing();
-    showSection('hero');
+    const initialSection = location.hash.slice(1) || 'hero';
+    showSection(initialSection);
 });
