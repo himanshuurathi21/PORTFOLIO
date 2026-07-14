@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="cFBH7cVy1Mr9tcIPc-uz4awe96c30GbpTGMHJ197oPc" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Himanshu Rathi - IT student at MIT AOE Pune building AI web tools. 5 live projects, hackathons, and counting.">
+    <meta property="og:title" content="Himanshu Rathi | Portfolio">
+    <meta property="og:description" content="IT student at MIT AOE Pune building AI web tools. 5 live projects, hackathons, and counting.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/profile.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Himanshu Rathi | Portfolio">
+    <meta name="twitter:description" content="IT student at MIT AOE Pune building AI web tools. 5 live projects, hackathons, and counting.">
+    <meta name="twitter:image" content="assets/images/profile.jpg">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2300adb5'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%230d0d0d' font-weight='bold' font-family='monospace'%3EHR%3C/text%3E%3C/svg%3E">
+    <title>Himanshu Rathi | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body id="top">
+
+<!-- ===== NAVBAR ===== -->
+<header id="navbar">
+    <nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul id="navMenu">
+            <li><a href="#hero" onclick="showSection('hero'); closeMobileMenu()">Home</a></li>
+            <li><a href="#about" onclick="showSection('about'); closeMobileMenu()">About</a></li>
+            <li><a href="#experience" onclick="showSection('experience'); closeMobileMenu()">Experience</a></li>
+            <li><a href="#skills" onclick="showSection('skills'); closeMobileMenu()">Skills</a></li>
+            <li><a href="#projects" onclick="showSection('projects'); closeMobileMenu()">Projects</a></li>
+            <li><a href="#impact" onclick="showSection('impact'); closeMobileMenu()">Impact</a></li>
+            <li><a href="#certifications" onclick="showSection('certifications'); closeMobileMenu()">Certs</a></li>
+            <li><a href="#academics" onclick="showSection('academics'); closeMobileMenu()">Academics</a></li>
+            <li><a href="#contact" onclick="showSection('contact'); closeMobileMenu()">Contact</a></li>
+            <li><a href="assets/resume.pdf" target="_blank" class="nav-resume-btn">Resume <i class="fas fa-arrow-up-right-from-square"></i></a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero" class="hero">
+    <div class="hero-bg-grid"></div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-content">
+        <div class="hero-status">
+            <span class="status-dot"></span>
+            Open for internships & collaborations
+        </div>
+        <img src="assets/images/profile.jpg" alt="Himanshu Rathi" class="profile-pic">
+        <h2 id="typing" aria-label="Himanshu Shailesh Rathi"></h2>
+        <p class="tagline">Still in college. Already shipping projects.</p>
+        <p class="hero-sub">2nd-year IT student @ MIT AOE Pune · 5 live projects · 3 hackathons</p>
+        <div class="hero-cta">
+            <a href="#projects" onclick="showSection('projects')" class="btn btn-primary">
+                <i class="fas fa-rocket"></i> See My Work
+            </a>
+            <a href="#contact" onclick="showSection('contact')" class="btn btn-outline">
+                <i class="fas fa-paper-plane"></i> Get in Touch
+            </a>
+        </div>
+        <div class="hero-stack">
+            <span>Python</span><span>HTML/CSS</span><span>SQL</span><span>Streamlit</span><span>AI APIs</span>
+        </div>
+        <div class="hero-stats" id="heroStats">
+            <div class="stat-item">
+                <span class="stat-number" data-target="5">0</span>
+                <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="16">0</span>
+                <span class="stat-label">Certifications</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="3">0</span>
+                <span class="stat-label">Hackathons</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="5">0</span>
+                <span class="stat-label">AI Tools</span>
+            </div>
+        </div>
+    </div>
+ 
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section content-section">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+        <div class="about-photo-col">
+            <img src="assets/images/profile.jpg" alt="Himanshu Rathi" class="about-photo">
+            <div class="about-quick-facts">
+                <div class="fact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Pune, Maharashtra</span>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-university"></i>
+                    <span>MIT AOE, B.Tech IT</span>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Batch of 2029</span>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-code-branch"></i>
+                    <span>5 live projects deployed</span>
+                </div>
+            </div>
+        </div>
+        <div class="about-text-col">
+
+            <p class="about-intro">Hey! I'm Himanshu - an IT Engineering student who loves building tech, creating content, and growing digital communities.</p>
+            <p>Beyond social media, I enjoy building tech projects - from sentiment analysis engines to business assistant dashboards. I've participated in 3 hackathons (Innovature, Velora 1.0, Nexathon) and earned 12+ certifications from IBM, Cisco, and Anthropic. I'm constantly learning about AI, digital marketing, branding, and entrepreneurship.</p>
+            <p>Currently, I work as a Social Media Manager at Fanfeed, where I create content strategies and campaigns that connect sports fans with meaningful experiences. On my own Instagram, a few of my reels have crossed <strong>200K+ views</strong>, with my content dashboard hitting <strong>400K+ impressions</strong>. I'm also a Social Media Member of CIPHER Association - the Executive Council of MIT's IT Department - contributing to branding and digital outreach.</p>
+            <p>Outside work, I'm into dance, public speaking, and shayri. I believe great content is not just about creativity - it's about solving problems, creating value, and building genuine connections.</p>
+            <p>I'm always excited to collaborate with talented people and work on impactful projects that combine technology with creativity. Still figuring out my exact path - startup, freelance, or something else - but I know I want to build, create, and make an impact.</p>
+
+            <div class="currently-building">
+                <span class="cb-label"><span class="status-dot small"></span> Currently building</span>
+                <span class="cb-text">Building with LangChain, RAG pipelines &amp; FastAPI - while growing my content presence and social media career.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience" class="section content-section">
+    <h2 class="section-title">Experience</h2>
+    <p class="section-sub">Where I've worked & contributed so far.</p>
+
+    <div class="exp-grid">
+        <div class="exp-card featured">
+            <div class="exp-badge">Current</div>
+            <div class="exp-header">
+                <div class="exp-icon"><i class="fas fa-users"></i></div>
+                <div class="exp-meta">
+                    <h3>Social Media Manager</h3>
+                    <span class="exp-company">Fanfeed Digital Pvt Ltd</span>
+                    <span class="exp-date">Apr 2026 - Present</span>
+                </div>
+            </div>
+            <p class="exp-desc">Manage content strategy and campaigns for a sports engagement platform. Created a collaboration reel with <strong>IPL founder Lalit Modi</strong> that crossed <strong>115K+ views</strong>.</p>
+            <div class="exp-tags">
+                <span>Content Strategy</span><span>Campaign Management</span><span>Sports Marketing</span><span>Reel Production</span>
+            </div>
+        </div>
+
+        <div class="exp-card featured">
+            <div class="exp-badge">Current</div>
+            <div class="exp-header">
+                <div class="exp-icon"><i class="fas fa-code-branch"></i></div>
+                <div class="exp-meta">
+                    <h3>Social Media Member</h3>
+                    <span class="exp-company">CIPHER Association - MIT AOE</span>
+                    <span class="exp-date">Feb 2026 - Present</span>
+                </div>
+            </div>
+            <p class="exp-desc">Part of the Executive Council of MIT's IT Department. Contribute to branding, digital outreach, and event promotions for the association.</p>
+            <div class="exp-tags">
+                <span>Branding</span><span>Digital Outreach</span><span>Event Promotions</span><span>Team Collaboration</span>
+            </div>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-header">
+                <div class="exp-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="exp-meta">
+                    <h3>Online Internship</h3>
+                    <span class="exp-company">Cisco Networking Academy - AICTE</span>
+                    <span class="exp-date">College Semester</span>
+                </div>
+            </div>
+            <p class="exp-desc">Selected through AICTE for a Cisco online internship. Completed 3 Networking Academy courses covering <strong>Python, JavaScript, and Data Analytics</strong> - building practical industry skills.</p>
+            <div class="exp-tags">
+                <span>Python</span><span>JavaScript</span><span>Data Analytics</span><span>AICTE</span><span>Cisco</span>
+            </div>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-header">
+                <div class="exp-icon"><i class="fas fa-video"></i></div>
+                <div class="exp-meta">
+                    <h3>Freelance Content Creator</h3>
+                    <span class="exp-company">LINCAMPUS</span>
+                    <span class="exp-date">One-time Project</span>
+                </div>
+            </div>
+            <p class="exp-desc">Created a paid promotional reel for LINCAMPUS as a freelance content creator. Delivered engaging content that aligned with their brand messaging.</p>
+            <div class="exp-tags">
+                <span>Paid Collaboration</span><span>Brand Content</span><span>Freelancing</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="section content-section gray">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-grid">
+        <div class="skill-group">
+            <h3 class="skill-group-title"><i class="fas fa-terminal"></i> Languages</h3>
+            <div class="skill-tags">
+                <span class="skill-tag strong">Python</span>
+                <span class="skill-tag strong">HTML</span>
+                <span class="skill-tag strong">CSS</span>
+                <span class="skill-tag medium">C</span>
+                <span class="skill-tag medium">SQL</span>
+                <span class="skill-tag learning">JavaScript</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <h3 class="skill-group-title"><i class="fas fa-layer-group"></i> Frameworks & Tools</h3>
+            <div class="skill-tags">
+                <span class="skill-tag strong">Streamlit</span>
+                <span class="skill-tag strong">Git & GitHub</span>
+                <span class="skill-tag medium">Netlify</span>
+                <span class="skill-tag medium">REST APIs</span>
+                <span class="skill-tag learning">LangChain</span>
+                <span class="skill-tag learning">Flask</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <h3 class="skill-group-title"><i class="fas fa-brain"></i> AI & Data</h3>
+            <div class="skill-tags">
+                <span class="skill-tag strong">Prompt Engineering</span>
+                <span class="skill-tag strong">Sentiment Analysis</span>
+                <span class="skill-tag medium">Data Visualization</span>
+                <span class="skill-tag medium">Data Analytics</span>
+                <span class="skill-tag learning">Machine Learning</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <h3 class="skill-group-title"><i class="fas fa-users"></i> Soft Skills</h3>
+            <div class="skill-tags">
+                <span class="skill-tag strong">Team Leadership</span>
+                <span class="skill-tag strong">Presentations</span>
+                <span class="skill-tag strong">Video Editing</span>
+                <span class="skill-tag medium">Event Management</span>
+                <span class="skill-tag medium">Content Creation</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="skill-legend">
+        <span class="leg-item"><span class="skill-tag strong">Proficient</span></span>
+        <span class="leg-item"><span class="skill-tag medium">Familiar</span></span>
+        <span class="leg-item"><span class="skill-tag learning">Learning</span></span>
+    </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="section content-section">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">Things I've built - live apps & production-ready systems.</p>
+
+    <div class="project-grid">
+
+        <div class="project-card featured">
+            <div class="project-badge">New</div>
+            <div class="project-thumb" style="background: linear-gradient(135deg, #0f766e, #14b8a6);">
+                <i class="fas fa-hospital"></i>
+            </div>
+            <div class="project-body">
+                <h3>RATHI's MEDISOFT</h3>
+                <p class="project-desc">Full-stack medical store management system with billing, inventory, regulatory compliance (Schedule H/H1/H2/NDPS), expiry alerts, sales reports, and cloud backup. Live in a real pharmacy.</p>
+                <div class="project-stack">
+                    <span>JavaScript</span><span>Node.js</span><span>Supabase</span><span>HTML/CSS</span><span>PDF Export</span>
+                </div>
+                <a href="https://forms.gle/7inxPV36TWRmEPpAA" target="_blank" class="btn btn-project">
+                    Request a Demo <i class="fas fa-paper-plane"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-thumb" style="background: linear-gradient(135deg, #1e40af, #3b82f6);">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="project-body">
+                <h3>AutoBiz AI</h3>
+                <p class="project-desc">AI business assistant that generates business plans, marketing copy &amp; financial projections in seconds using conversational AI.</p>
+                <div class="project-stack">
+                    <span>Python</span><span>Streamlit</span><span>AI APIs</span><span>Netlify</span>
+                </div>
+                <a href="https://autobiz-business-ai-agent.netlify.app/" target="_blank" class="btn btn-project">
+                    View Live <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-thumb" style="background: linear-gradient(135deg, #6d28d9, #8b5cf6);">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="project-body">
+                <h3>SpendWise</h3>
+                <p class="project-desc">Predictive finance dashboard that tracks expenses, visualizes spending patterns, and forecasts budget needs with trend analysis.</p>
+                <div class="project-stack">
+                    <span>Python</span><span>Data Analytics</span><span>Visualization</span><span>Netlify</span>
+                </div>
+                <a href="https://spend-wise-finance-manager.netlify.app/" target="_blank" class="btn btn-project">
+                    View Live <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-thumb" style="background: linear-gradient(135deg, #b91c1c, #ef4444);">
+                <i class="fas fa-comment-dots"></i>
+            </div>
+            <div class="project-body">
+                <h3>Sentimeter</h3>
+                <p class="project-desc">Sentiment analysis engine that classifies text sentiment with 85%+ accuracy using NLP - processes reviews, social media posts, and feedback.</p>
+                <div class="project-stack">
+                    <span>Python</span><span>NLP</span><span>Streamlit</span><span>ML</span>
+                </div>
+                <a href="https://sentimeter-sentiment-analysis-engine.streamlit.app/" target="_blank" class="btn btn-project">
+                    View Live <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-thumb" style="background: linear-gradient(135deg, #15803d, #22c55e);">
+                <i class="fas fa-car"></i>
+            </div>
+            <div class="project-body">
+                <h3>ParkEase</h3>
+                <p class="project-desc">Smart parking management system that tracks real-time availability across 200+ parking slots and handles bookings efficiently.</p>
+                <div class="project-stack">
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span>
+                </div>
+                <a href="https://reineaar.github.io/ParkEaseV2/" target="_blank" class="btn btn-project">
+                    View Live <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="github-cta">
+        <p>More experiments and mini-projects on GitHub</p>
+        <a href="https://github.com/himanshuurathi21" target="_blank" class="btn btn-outline">
+            <i class="fab fa-github"></i> View GitHub Profile
+        </a>
+    </div>
+</section>
+
+<!-- ===== IMPACT ===== -->
+<section id="impact" class="section content-section gray">
+    <h2 class="section-title">Impact</h2>
+    <p class="section-sub">Numbers, milestones, and moments that define my journey.</p>
+
+    <div class="content-highlights">
+        <div class="content-card">
+            <i class="fas fa-chart-simple"></i>
+            <span class="content-stat">400K+</span>
+            <span class="content-label">Content Dashboard Impressions</span>
+        </div>
+        <div class="content-card">
+            <i class="fas fa-fire"></i>
+            <span class="content-stat">275K</span>
+            <span class="content-label">Trending Reel Views</span>
+        </div>
+        <div class="content-card">
+            <i class="fas fa-star"></i>
+            <span class="content-stat">115K+</span>
+            <span class="content-label">Lalit Modi Collab Reel</span>
+        </div>
+        <div class="content-card">
+            <i class="fas fa-music"></i>
+            <span class="content-stat">Viral</span>
+            <span class="content-label">College Music Video</span>
+        </div>
+        <div class="content-card">
+            <i class="fas fa-handshake"></i>
+            <span class="content-stat">Paid</span>
+            <span class="content-label">LINCAMPUS Freelance Project</span>
+        </div>
+    </div>
+
+    <div class="milestone-grid" style="margin-top: 40px;">
+        <div class="milestone-card">
+            <div class="milestone-icon"><i class="fas fa-briefcase"></i></div>
+            <h3>First Internship</h3>
+            <p>Started as Social Media Manager at Fanfeed Digital - my first professional role while still in college.</p>
+        </div>
+        <div class="milestone-card">
+            <div class="milestone-icon"><i class="fas fa-crown"></i></div>
+            <h3>Lalit Modi Collab</h3>
+            <p>Created a reel with IPL's founder that gained 115K+ views - a career highlight in sports content.</p>
+        </div>
+        <div class="milestone-card">
+            <div class="milestone-icon"><i class="fas fa-trend-up"></i></div>
+            <h3>275K Views Reel</h3>
+            <p>Rode a trending format and created a reel that exploded to 275K+ views on Instagram.</p>
+        </div>
+        <div class="milestone-card">
+            <div class="milestone-icon"><i class="fas fa-handshake"></i></div>
+            <h3>First Paid Freelance</h3>
+            <p>Got my first paid content project with LINCAMPUS - turned creativity into income.</p>
+        </div>
+        <div class="milestone-card">
+            <div class="milestone-icon"><i class="fas fa-users"></i></div>
+            <h3>CIPHER Association</h3>
+            <p>Joined the Executive Council of MIT's IT Department from day one of CIPHER's formation.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CERTIFICATIONS ===== -->
+<section id="certifications" class="section content-section gray">
+    <h2 class="section-title">Certifications</h2>
+    <p class="section-sub">16+ certifications across AI, data, programming &amp; hackathons.</p>
+
+    <div class="cert-highlights">
+        <div class="cert-highlight-card">
+            <i class="fas fa-award"></i>
+            <span class="cert-count">3</span>
+            <span class="cert-org">IBM</span>
+        </div>
+        <div class="cert-highlight-card">
+            <i class="fas fa-award"></i>
+            <span class="cert-count">4</span>
+            <span class="cert-org">Anthropic</span>
+        </div>
+        <div class="cert-highlight-card">
+            <i class="fas fa-award"></i>
+            <span class="cert-count">7</span>
+            <span class="cert-org">Cisco</span>
+        </div>
+        <div class="cert-highlight-card">
+            <i class="fas fa-trophy"></i>
+            <span class="cert-count">3</span>
+            <span class="cert-org">Hackathons</span>
+        </div>
+    </div>
+
+    <div class="cert-accordion">
+        <div class="cert-category">
+            <button class="cert-toggle" onclick="toggleCert('ibm')" aria-expanded="false">
+                <span><i class="fas fa-circle-dot cert-org-icon ibm"></i> IBM Certifications</span>
+                <i class="fas fa-chevron-down cert-chevron"></i>
+            </button>
+            <div id="ibm" class="cert-list">
+                <a href="assets/certificates/ibm-data-visualization.jpg" target="_blank"><i class="fas fa-chart-bar"></i> Data Visualization</a>
+                <a href="assets/certificates/ibm-javascript.jpg" target="_blank"><i class="fas fa-code"></i> JavaScript</a>
+                <a href="assets/certificates/ibm-career-management.jpg" target="_blank"><i class="fas fa-briefcase"></i> Career Management Essentials</a>
+            </div>
+        </div>
+
+        <div class="cert-category">
+            <button class="cert-toggle" onclick="toggleCert('anthropic')" aria-expanded="false">
+                <span><i class="fas fa-circle-dot cert-org-icon anthropic"></i> Anthropic Certifications</span>
+                <i class="fas fa-chevron-down cert-chevron"></i>
+            </button>
+            <div id="anthropic" class="cert-list">
+                <a href="assets/certificates/claude-101.jpg" target="_blank"><i class="fas fa-robot"></i> Claude 101</a>
+                <a href="assets/certificates/ai-fluency-students.jpg" target="_blank"><i class="fas fa-brain"></i> AI Fluency - Students</a>
+                <a href="assets/certificates/ai-fluency-nonprofits.jpg" target="_blank"><i class="fas fa-hands-helping"></i> AI Fluency - Nonprofits</a>
+                <a href="assets/certificates/ai-fluency-framework.jpg" target="_blank"><i class="fas fa-sitemap"></i> Framework & Foundations</a>
+            </div>
+        </div>
+
+        <div class="cert-category">
+            <button class="cert-toggle" onclick="toggleCert('cisco')" aria-expanded="false">
+                <span><i class="fas fa-circle-dot cert-org-icon cisco"></i> Cisco Certifications</span>
+                <i class="fas fa-chevron-down cert-chevron"></i>
+            </button>
+            <div id="cisco" class="cert-list">
+                <a href="assets/certificates/python-essentials1.jpg" target="_blank"><i class="fab fa-python"></i> Python Essentials 1</a>
+                <a href="assets/certificates/python-essentials2.jpg" target="_blank"><i class="fab fa-python"></i> Python Essentials 2</a>
+                <a href="assets/certificates/JavaScript_Essentials_1.pdf" target="_blank"><i class="fas fa-code"></i>
+JavaScript Essentials 1</a>
+                <a href="assets/certificates/JavaScript_Essentials_2.pdf" target="_blank"><i class="fas fa-code"></i>
+JavaScript Essentials 2</a>
+                <a href="assets/certificates/Data_Analytics_Essentials.pdf" target="_blank"><i class="fas fa-database"></i> Data Analytics Essentials</a>
+                <a href="assets/certificates/Introduction_to_Modern_AI.pdf" target="_blank"><i class="fas fa-microchip"></i> Introduction to Modern AI</a>
+                <a href="assets/certificates/Apply_AI_Analyze_Customer_Reviews.pdf" target="_blank"><i class="fas fa-star-half-alt"></i> Apply AI - Analyze Customer Reviews</a>
+            </div>
+        </div>
+
+        <div class="cert-category">
+            <button class="cert-toggle" onclick="toggleCert('hackathon')" aria-expanded="false">
+                <span><i class="fas fa-circle-dot cert-org-icon hackathon"></i> Hackathon Participations</span>
+                <i class="fas fa-chevron-down cert-chevron"></i>
+            </button>
+            <div id="hackathon" class="cert-list">
+                <a href="assets/certificates/innovature.jpg" target="_blank"><i class="fas fa-trophy"></i> Innovature</a>
+                <a href="assets/certificates/velora.jpg" target="_blank"><i class="fas fa-trophy"></i> Velora 1.0</a>
+                <a href="assets/certificates/nexathon.jpg" target="_blank"><i class="fas fa-trophy"></i> Nexathon</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ACADEMICS ===== -->
+<section id="academics" class="section content-section">
+    <h2 class="section-title">Academics</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-content">
+                <div class="timeline-year">2025 - 2029</div>
+                <h3>B.Tech - Information Technology</h3>
+                <p>MIT Academy of Engineering, Alandi, Pune</p>
+                <span class="timeline-badge current">Current</span>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="timeline-year">2025</div>
+                <h3>MHT-CET</h3>
+                <p>94.464 Percentile</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="timeline-year">2025</div>
+                <h3>HSC (12th)</h3>
+                <p>79%</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="timeline-year">2023</div>
+                <h3>SSC (10th)</h3>
+                <p>94.20%</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section content-section gray">
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-sub">Open to internships, collaborations, and interesting conversations.</p>
+
+    <div class="contact-grid">
+        <a href="mailto:rathihimanshuu@gmail.com" class="contact-card">
+            <i class="fas fa-envelope"></i>
+            <span class="contact-label">Email</span>
+            <span class="contact-value">rathihimanshuu@gmail.com</span>
+        </a>
+        <a href="https://linkedin.com/in/himanshu-rathi-72795538b" target="_blank" class="contact-card">
+            <i class="fab fa-linkedin"></i>
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">himanshu-rathi</span>
+        </a>
+        <a href="https://github.com/himanshuurathi21" target="_blank" class="contact-card">
+            <i class="fab fa-github"></i>
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">himanshuurathi21</span>
+        </a>
+        <a href="https://www.instagram.com/himanshuu_rathi" target="_blank" class="contact-card">
+            <i class="fab fa-instagram"></i>
+            <span class="contact-label">Instagram</span>
+            <span class="contact-value">@himanshuu_rathi</span>
+        </a>
+    </div>
+</section>
+<!-- ===== FOOTER ===== -->
+<footer>
+    <p>Designed & Built by <span class="accent">Himanshu Rathi</span></p>
+    <p class="footer-sub">IT Engineer in the making</p>
+</footer>
+
+<!-- ===== LOADER ===== -->
+<div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'}); showSection('hero')" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightboxImg">
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="js/script.js"></script>
+</body>
+</html>

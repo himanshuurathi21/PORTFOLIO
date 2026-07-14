@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Rathi - Resume</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #e8e8e8;
+            padding: 40px 20px;
+            color: #1a1a1a;
+        }
+        .resume {
+            max-width: 850px;
+            margin: auto;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: #0d1117;
+            color: #fff;
+            padding: 36px 44px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .header-left h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .header-left .subtitle {
+            font-size: 0.85rem;
+            color: #8b949e;
+            margin-top: 4px;
+        }
+        .header-right {
+            text-align: right;
+            font-size: 0.75rem;
+            color: #8b949e;
+            line-height: 1.8;
+        }
+        .header-right a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        .header-right a:hover { text-decoration: underline; }
+        .body {
+            padding: 32px 44px;
+        }
+        .section {
+            margin-bottom: 24px;
+        }
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0d1117;
+            border-bottom: 2px solid #0d1117;
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .exp-item {
+            margin-bottom: 14px;
+        }
+        .exp-item:last-child { margin-bottom: 0; }
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .exp-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #0d1117;
+        }
+        .exp-company {
+            font-size: 0.82rem;
+            color: #0969da;
+            font-weight: 600;
+        }
+        .exp-date {
+            font-size: 0.72rem;
+            color: #656d76;
+            white-space: nowrap;
+        }
+        .exp-desc {
+            font-size: 0.8rem;
+            color: #484f58;
+            line-height: 1.5;
+            margin-top: 3px;
+        }
+        .exp-desc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .exp-desc ul li {
+            position: relative;
+            padding-left: 14px;
+            margin-bottom: 2px;
+        }
+        .exp-desc ul li::before {
+            content: '-';
+            position: absolute;
+            left: 0;
+            color: #0969da;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        .tags span {
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            background: #f0f2f4;
+            border-radius: 3px;
+            color: #484f58;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 24px;
+        }
+        .skill-cat {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #656d76;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 4px;
+        }
+        .skill-items {
+            font-size: 0.82rem;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        .project-item {
+            margin-bottom: 10px;
+        }
+        .project-item:last-child { margin-bottom: 0; }
+        .project-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #0d1117;
+        }
+        .project-name span {
+            font-weight: 400;
+            color: #656d76;
+            font-size: 0.75rem;
+        }
+        .project-desc {
+            font-size: 0.78rem;
+            color: #484f58;
+            line-height: 1.5;
+        }
+        .cert-list {
+            font-size: 0.8rem;
+            color: #484f58;
+            line-height: 1.7;
+            columns: 2;
+        }
+        .cert-list strong { color: #0d1117; }
+        .inline-dot { color: #0969da; margin: 0 4px; }
+        @page {
+            margin: 0;
+            size: A4;
+        }
+        @media print {
+            body { background: #fff; padding: 0; }
+            .resume { box-shadow: none; border-radius: 0; max-width: 100%; }
+            .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .tags span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 600px) {
+            .header { flex-direction: column; gap: 10px; padding: 24px; }
+            .header-right { text-align: left; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .cert-list { columns: 1; }
+            .body { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+<div class="resume">
+    <div class="header">
+        <div class="header-left">
+            <h1>Himanshu Rathi</h1>
+            <div class="subtitle">IT Engineering Student &amp; Social Media Manager</div>
+        </div>
+        <div class="header-right">
+            rathihimanshuu@gmail.com<br>
+            Pune, Maharashtra<br>
+            <a href="https://linkedin.com/in/himanshu-rathi-72795538b">linkedin.com/in/himanshu-rathi</a><br>
+            <a href="https://github.com/himanshuurathi21">github.com/himanshuurathi21</a>
+        </div>
+    </div>
+
+    <div class="body">
+        <!-- SUMMARY -->
+        <div class="section">
+            <div class="section-title">Summary</div>
+            <p style="font-size:0.82rem;color:#484f58;line-height:1.6;">
+                IT Engineering student at MIT AOE Pune with hands-on experience in social media management, content creation, and AI-powered web development. Currently working as Social Media Manager at Fanfeed Digital, managing sports engagement campaigns and creating viral content. Skilled in Python, data analytics, and building live digital products.
+            </p>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="section">
+            <div class="section-title">Experience</div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-title">Social Media Manager</span>
+                        <span class="exp-company"> &middot; Fanfeed Digital Pvt Ltd</span>
+                    </div>
+                    <span class="exp-date">Apr 2026 - Present</span>
+                </div>
+                <div class="exp-desc">
+                    <ul>
+                        <li>Manage content strategy and campaigns for a sports engagement platform</li>
+                        <li>Created collaboration reel with IPL founder Lalit Modi (115K+ views)</li>
+                        <li>Achieved 400K+ impressions on content dashboard</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-title">Social Media Member</span>
+                        <span class="exp-company"> &middot; CIPHER Association, MIT AOE</span>
+                    </div>
+                    <span class="exp-date">Feb 2026 - Present</span>
+                </div>
+                <div class="exp-desc">
+                    <ul>
+                        <li>Part of Executive Council of MIT's IT Department</li>
+                        <li>Responsible for branding, digital outreach, and event promotions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-title">Online Intern</span>
+                        <span class="exp-company"> &middot; Cisco Networking Academy (AICTE)</span>
+                    </div>
+                    <span class="exp-date">College Semester</span>
+                </div>
+                <div class="exp-desc">
+                    <ul>
+                        <li>Selected through AICTE for a Cisco online internship</li>
+                        <li>Completed 3 Networking Academy courses: Python, JavaScript, Data Analytics</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-title">Freelance Content Creator</span>
+                        <span class="exp-company"> &middot; LINCAMPUS</span>
+                    </div>
+                    <span class="exp-date">One-time Project</span>
+                </div>
+                <div class="exp-desc">
+                    <ul>
+                        <li>Created a paid promotional reel as a freelance content creator</li>
+                        <li>Delivered brand-aligned engaging content</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="grid-2">
+                <div>
+                    <div class="exp-title">B.Tech Information Technology</div>
+                    <div style="font-size:0.78rem;color:#484f58;">MIT Academy of Engineering, Pune</div>
+                    <div style="font-size:0.72rem;color:#656d76;">2025 - 2029 &middot; Current</div>
+                </div>
+                <div>
+                    <div class="exp-title">MHT-CET</div>
+                    <div style="font-size:0.78rem;color:#484f58;">94.464 Percentile</div>
+                    <div style="font-size:0.72rem;color:#656d76;">2025</div>
+                </div>
+                <div>
+                    <div class="exp-title">HSC (12th)</div>
+                    <div style="font-size:0.78rem;color:#484f58;">79%</div>
+                    <div style="font-size:0.72rem;color:#656d76;">2025</div>
+                </div>
+                <div>
+                    <div class="exp-title">SSC (10th)</div>
+                    <div style="font-size:0.78rem;color:#484f58;">94.20%</div>
+                    <div style="font-size:0.72rem;color:#656d76;">2023</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="section">
+            <div class="section-title">Skills</div>
+            <div class="skills-grid">
+                <div>
+                    <div class="skill-cat">Languages</div>
+                    <div class="skill-items">Python, HTML, CSS, C, SQL, JavaScript</div>
+                </div>
+                <div>
+                    <div class="skill-cat">Frameworks &amp; Tools</div>
+                    <div class="skill-items">Streamlit, Git &amp; GitHub, Netlify, REST APIs, LangChain, Flask</div>
+                </div>
+                <div>
+                    <div class="skill-cat">Data &amp; AI</div>
+                    <div class="skill-items">Data Analytics, Data Visualization, Sentiment Analysis, Prompt Engineering, Machine Learning</div>
+                </div>
+                <div>
+                    <div class="skill-cat">Content &amp; Soft Skills</div>
+                    <div class="skill-items">Content Strategy, Social Media Marketing, Video Editing, Team Leadership, Event Management</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="section" style="page-break-before: always;">
+            <div class="section-title">Projects</div>
+
+            <div class="project-item">
+                <div class="project-name">RATHI's MEDISOFT <span>| JavaScript, Node.js, Supabase</span></div>
+                <div class="project-desc">Full-stack medical store management system with billing, inventory, regulatory compliance, expiry alerts, and cloud backup. Live in a real pharmacy.</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-name">AutoBiz AI <span>| Python, Streamlit, AI APIs</span></div>
+                <div class="project-desc">AI-powered business assistant that generates business plans, marketing copy, and financial projections in seconds.</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-name">SpendWise <span>| Python, Data Analytics, Visualization</span></div>
+                <div class="project-desc">Predictive finance dashboard that tracks expenses, visualizes spending patterns, and forecasts budget needs.</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-name">Sentimeter <span>| Python, NLP, Streamlit</span></div>
+                <div class="project-desc">Sentiment analysis engine that classifies text sentiment with 85%+ accuracy using NLP.</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-name">ParkEase <span>| HTML, CSS, JavaScript</span></div>
+                <div class="project-desc">Smart parking management system tracking real-time availability across 200+ slots.</div>
+            </div>
+        </div>
+
+        <!-- CERTIFICATIONS & ACHIEVEMENTS -->
+        <div class="section">
+            <div class="section-title">Certifications &amp; Achievements</div>
+            <div class="cert-list">
+                <strong>IBM</strong> &middot; Data Visualization, JavaScript, Career Management Essentials<br>
+                <strong>Anthropic</strong> &middot; Claude 101, AI Fluency (x3)<br>
+                <strong>Cisco</strong> &middot; Python Essentials 1 &amp; 2, JavaScript Essentials 1 &amp; 2, Data Analytics Essentials, Intro to Modern AI, Apply AI<br>
+                <strong>Hackathons</strong> &middot; Innovature, Velora 1.0, Nexathon (all participated)
+            </div>
+            <div style="margin-top:10px;font-size:0.78rem;color:#484f58;">
+                <strong>Content Milestones:</strong> 400K+ dashboard impressions &middot; 275K views trending reel &middot; 115K+ views Lalit Modi collab
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
