@@ -193,6 +193,9 @@
             <div class="exp-tags">
                 <span>Paid Collaboration</span><span>Brand Content</span><span>Freelancing</span>
             </div>
+            <a href="https://www.instagram.com/reel/DaR8Vh0Mnf7/?igsh=MWN1bm43Y21mOGRnYw==" target="_blank" class="btn btn-project" style="margin-left:60px;margin-top:4px;">
+                <i class="fab fa-instagram"></i> View Reel
+            </a>
         </div>
     </div>
 </section>
@@ -606,7 +609,7 @@ JavaScript Essentials 2</a>
 </button>
 
 <!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="backToTop" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'}); showSection('hero')" aria-label="Back to top">
+<button class="back-to-top" id="backToTop" onclick="document.querySelector('.active-section')?.scrollIntoView({behavior:'smooth'}) || window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
     <i class="fas fa-arrow-up"></i>
 </button>
 
