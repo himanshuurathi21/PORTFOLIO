@@ -171,7 +171,39 @@ document.addEventListener('DOMContentLoaded', () => {
         showSection(id);
     });
 
-    // ── Scroll progress bar ───────────────────
+    // ── Section navigation arrows ──────────────
+    const sections = ['hero', 'about', 'experience', 'skills', 'projects', 'impact', 'certifications', 'academics', 'contact'];
+    const prevBtn = document.getElementById('prevSection');
+    const nextBtn = document.getElementById('nextSection');
+
+    function getCurrentSectionIndex() {
+        const hash = location.hash.slice(1) || 'hero';
+        return sections.indexOf(hash);
+    }
+
+    function navigateSection(direction) {
+        const idx = getCurrentSectionIndex();
+        const next = (idx + direction + sections.length) % sections.length;
+        showSection(sections[next]);
+    }
+
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => navigateSection(-1));
+        nextBtn.addEventListener('click', () => navigateSection(1));
+    }
+
+    // Keyboard shortcuts (inside DOMContentLoaded so navigateSection is in scope)
+    document.addEventListener('keydown', (e) => {
+        const lb = document.getElementById('lightbox');
+        if (lb && lb.classList.contains('open')) {
+            if (e.key === 'Escape') closeLightbox();
+            return;
+        }
+        if (e.key === 'ArrowLeft') navigateSection(-1);
+        if (e.key === 'ArrowRight') navigateSection(1);
+    });
+
+    // ── BACK TO TOP ──
     const progressBar = document.createElement('div');
     progressBar.className = 'scroll-progress';
     document.body.prepend(progressBar);
@@ -202,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let particles = [];
-        let animId;
+        let particlesAnimId = null;
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -248,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => { p.update(); p.draw(); });
-            animId = requestAnimationFrame(animateParticles);
+            particlesAnimId = requestAnimationFrame(animateParticles);
         }
 
         initParticles();
@@ -258,21 +290,30 @@ document.addEventListener('DOMContentLoaded', () => {
             resizeCanvas();
             initParticles();
         });
+
+        // Pause/resume particles when switching sections
+        const origShowSection = window.showSection;
+        window.showSection = function(sectionId) {
+            if (sectionId === 'hero') {
+                if (!particlesAnimId) animateParticles();
+            } else if (particlesAnimId) {
+                cancelAnimationFrame(particlesAnimId);
+                particlesAnimId = null;
+            }
+            origShowSection(sectionId);
+        };
     }
 
 });
 
 // ── Animated counters ──────────────────────────
-let statsAnimated = false;
-
 function animateStats() {
-    if (statsAnimated) return;
-    statsAnimated = true;
     const counters = document.querySelectorAll('#heroStats .stat-number');
     counters.forEach(counter => {
         const target = parseInt(counter.dataset.target);
+        counter.textContent = '0';
         let current = 0;
-        const step = Math.ceil(target / 30);
+        const step = Math.max(1, Math.ceil(target / 30));
         const interval = setInterval(() => {
             current += step;
             if (current >= target) {
@@ -289,10 +330,3 @@ function animateStats() {
 function closeLightbox() {
     document.getElementById('lightbox').classList.remove('open');
 }
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        const lb = document.getElementById('lightbox');
-        if (lb.classList.contains('open')) closeLightbox();
-    }
-});

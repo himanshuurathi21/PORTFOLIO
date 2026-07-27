@@ -603,6 +603,10 @@ nav a:hover { color: var(--primary); background: rgba(0,173,181,0.08); }
     flex: 1;
     margin-bottom: 14px;
 }
+.project-desc strong {
+    color: var(--primary);
+    font-weight: 600;
+}
 
 .project-stack {
     display: flex;
@@ -832,8 +836,49 @@ footer {
 footer .footer-sub { font-size: 0.75rem; }
 
 /* ============================================
-   BACK TO TOP
+   SECTION NAVIGATION ARROWS
    ============================================ */
+.section-nav-btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--dark-4);
+    border: 1px solid var(--border);
+    color: var(--text-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition);
+    font-size: 0.85rem;
+    z-index: 998;
+}
+.section-nav-prev {
+    left: 20px;
+}
+.section-nav-next {
+    right: 20px;
+}
+.section-nav-btn:hover {
+    background: var(--primary);
+    color: var(--dark);
+    border-color: var(--primary);
+    transform: translateY(-50%) scale(1.1);
+}
+.section-nav-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .section-nav-prev { left: 10px; }
+    .section-nav-next { right: 10px; }
+    .section-nav-btn { width: 32px; height: 32px; font-size: 0.75rem; }
+}
+
+
 .back-to-top {
     position: fixed;
     bottom: 28px;
@@ -925,7 +970,6 @@ footer .footer-sub { font-size: 0.75rem; }
    PROJECT THUMBNAILS
    ============================================ */
 .project-thumb {
-    width: 100%;
     height: 140px;
     border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     display: flex;
