@@ -1,0 +1,24 @@
+{
+  "name": "My Password Manager",
+  "short_name": "Password Manager",
+  "description": "A secure, local-first password manager that keeps your data on your device.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f5f5f7",
+  "theme_color": "#0071e3",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

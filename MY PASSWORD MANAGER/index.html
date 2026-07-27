@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0071e3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Password Manager">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="description" content="A secure, local-first password manager that keeps your data on your device.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.jpeg">
+  <title>My Password Manager</title>
+  <link rel="stylesheet" href="css/styles.css?v=2">
+</head>
+<body>
+
+<header id="app-header">
+  <div class="header-inner">
+    <h1>My Password Manager</h1>
+    <div class="header-actions">
+      <button class="icon-btn" id="settings-btn" aria-label="Settings">&#x2699;&#xFE0F;</button>
+    </div>
+  </div>
+</header>
+
+<div id="notification" class="notification hidden"></div>
+
+<!-- Home Screen -->
+<div id="view-home" class="view">
+  <div class="container">
+    <div class="home-header">
+      <h1 class="home-title">My Password Manager</h1>
+      <p class="home-subtitle">Choose an option</p>
+    </div>
+    <div class="home-cards">
+      <button class="home-card" id="home-view-btn">
+        <div class="home-card-icon home-card-icon-view">&#x1F512;</div>
+        <span class="home-card-label">View Saved Passwords</span>
+        <span class="home-card-desc">See all your saved accounts</span>
+      </button>
+      <button class="home-card" id="home-add-btn">
+        <div class="home-card-icon home-card-icon-add">+</div>
+        <span class="home-card-label">Add New Password</span>
+        <span class="home-card-desc">Save a new account</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Unlock Screen -->
+<div id="view-unlock" class="view auth-screen hidden">
+  <div class="auth-card card">
+    <h2 class="auth-title">My Password Manager</h2>
+    <p class="auth-subtitle">Enter Your Password</p>
+    <form id="unlock-form" onsubmit="return false;">
+      <div class="form-group">
+        <label for="unlock-password">Master Password</label>
+        <input type="password" id="unlock-password" autocomplete="current-password" aria-label="Enter master password">
+      </div>
+      <div id="unlock-error" class="warning-box hidden"></div>
+      <button class="btn btn-primary" id="unlock-btn" style="width:100%;margin-top:8px;">Unlock</button>
+    </form>
+    <button class="btn btn-secondary" id="biometric-unlock-btn" style="width:100%;margin-top:12px;" aria-label="Use fingerprint or biometrics">
+      Use Fingerprint / Biometrics
+    </button>
+  </div>
+</div>
+
+<!-- Add/Edit Entry -->
+<div id="view-add-edit" class="view">
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title" id="add-edit-title">Add New Password</h2>
+      <form id="add-edit-form" onsubmit="return false;">
+        <div class="form-group">
+          <label for="add-edit-service">App / Website Name</label>
+          <input type="text" id="add-edit-service" placeholder="e.g. Instagram" aria-label="Service name">
+        </div>
+        <div class="form-group">
+          <label for="add-edit-username">Username / Email</label>
+          <input type="text" id="add-edit-username" placeholder="e.g. john123@gmail.com" aria-label="Username or email">
+        </div>
+        <div class="form-group">
+          <label for="add-edit-password">Password</label>
+          <div class="input-with-btn">
+            <input type="password" id="add-edit-password" placeholder="Password" aria-label="Password">
+            <button class="btn btn-sm btn-secondary" id="add-edit-toggle-pw" type="button">Show</button>
+            <button class="btn btn-sm btn-secondary" id="add-edit-gen-btn" type="button">Generate</button>
+          </div>
+        </div>
+
+        <button class="btn btn-sm btn-secondary" id="add-more-details-btn" type="button" style="margin-top:8px;">
+          + Add More Details
+        </button>
+
+        <div id="add-edit-extra" class="hidden" style="margin-top:12px;">
+          <div class="form-group">
+            <label for="add-edit-url">Website URL</label>
+            <input type="url" id="add-edit-url" placeholder="https://" aria-label="Website URL">
+          </div>
+          <div class="form-group">
+            <label for="add-edit-email">Email</label>
+            <input type="email" id="add-edit-email" placeholder="email@example.com" aria-label="Email">
+          </div>
+          <div class="form-group">
+            <label for="add-edit-notes">Notes</label>
+            <input type="text" id="add-edit-notes" placeholder="Personal account" aria-label="Notes">
+          </div>
+
+          <div style="margin-top:12px;">
+            <label style="font-size:0.85rem;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Custom Fields</label>
+            <div id="add-edit-custom-fields"></div>
+            <button class="btn btn-sm btn-secondary" id="add-custom-field-btn" type="button">+ Add Custom Field</button>
+          </div>
+        </div>
+
+        <div id="add-edit-error" class="warning-box hidden"></div>
+
+        <div class="flex gap-2" style="margin-top:16px;">
+          <button class="btn btn-primary" id="add-edit-save-btn" type="button" style="flex:1;">Save New Password</button>
+          <button class="btn btn-secondary" id="add-edit-cancel-btn" type="button" style="flex:1;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Settings -->
+<div id="view-settings" class="view">
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title">Settings</h2>
+
+      <div class="settings-section">
+        <h3>Security</h3>
+        <div class="setting-row">
+          <div>
+            <div class="setting-label">Master Password</div>
+            <div class="setting-desc">Status: <span id="settings-pw-status">Not set</span></div>
+          </div>
+          <div class="flex gap-2" style="gap:4px;">
+            <button class="btn btn-sm btn-outline hidden" id="settings-set-pw-btn">Set Password</button>
+            <button class="btn btn-sm btn-outline hidden" id="settings-change-pw-btn">Change</button>
+            <button class="btn btn-sm btn-outline-danger hidden" id="settings-remove-pw-btn">Remove</button>
+          </div>
+        </div>
+        <div class="setting-row">
+          <div>
+            <div class="setting-label">Biometric Unlock</div>
+            <div class="setting-desc" id="settings-biometric-status">Checking...</div>
+          </div>
+          <button class="btn btn-sm btn-outline hidden" id="settings-biometric-toggle">Enable</button>
+        </div>
+        <div class="setting-row">
+          <div>
+            <div class="setting-label">Auto Lock</div>
+            <div class="setting-desc">Automatically lock the vault after inactivity</div>
+          </div>
+          <select id="settings-autolock" style="width:auto;min-width:100px;">
+            <option value="never">Never</option>
+            <option value="1">1 minute</option>
+            <option value="5" selected>5 minutes</option>
+            <option value="15">15 minutes</option>
+            <option value="30">30 minutes</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h3>Backup</h3>
+        <div class="setting-row">
+          <div>
+            <div class="setting-label">Export Encrypted Backup</div>
+            <div class="setting-desc">Download your encrypted vault</div>
+          </div>
+          <button class="btn btn-sm btn-outline" id="settings-export-btn">Export</button>
+        </div>
+        <div class="setting-row">
+          <div>
+            <div class="setting-label">Import Encrypted Backup</div>
+            <div class="setting-desc">Restore from an encrypted backup file</div>
+          </div>
+          <button class="btn btn-sm btn-outline" id="settings-import-btn">Import</button>
+          <input type="file" id="import-file-input" accept=".json" style="display:none">
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h3>Appearance</h3>
+        <div class="setting-row">
+          <div>
+            <div class="setting-label">Theme</div>
+          </div>
+          <select id="settings-theme" style="width:auto;min-width:100px;">
+            <option value="system">System Default</option>
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h3 style="color:var(--danger);">Danger Zone</h3>
+        <div class="setting-row">
+          <div>
+            <div class="setting-label">Delete All Data</div>
+            <div class="setting-desc">Remove all vault entries and reset all settings</div>
+          </div>
+          <button class="btn btn-sm btn-danger" id="settings-delete-all-btn">Delete All</button>
+        </div>
+      </div>
+
+      <button class="btn btn-secondary" id="settings-back-btn" style="width:100%;margin-top:12px;">Back to Home</button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete All Data Confirmation -->
+<div id="view-delete-all-data" class="view">
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title">Delete All Data?</h2>
+      <p class="text-secondary">This will permanently delete all saved passwords, custom fields, and reset all settings including master password, theme, auto-lock, and biometric credentials. This action cannot be undone.</p>
+      <div class="flex gap-2" style="margin-top:16px;">
+        <button class="btn btn-danger" id="delete-all-confirm-btn" style="flex:1;">Delete Everything</button>
+        <button class="btn btn-secondary" id="delete-all-cancel-btn" style="flex:1;">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Saved Passwords (Vault) -->
+<div id="view-vault" class="view">
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title">Saved Passwords</h2>
+      <div class="vault-search">
+        <span class="vault-search-icon">&#x1F50D;</span>
+        <input type="text" id="vault-search-input" placeholder="Search by name, username or email..." aria-label="Search saved passwords">
+      </div>
+      <div class="vault-controls">
+        <select id="vault-sort" aria-label="Sort entries">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="az">A-Z</option>
+          <option value="za">Z-A</option>
+        </select>
+      </div>
+      <div id="entry-list"></div>
+      <div id="empty-entry-state" class="empty-state">
+        <div class="empty-icon">&#x1F512;</div>
+        <p>No passwords saved yet</p>
+      </div>
+      <button class="btn btn-secondary" id="vault-back-btn" style="width:100%;margin-top:12px;">Back to Home</button>
+    </div>
+  </div>
+</div>
+
+<!-- View Entry Detail -->
+<div id="view-view" class="view">
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title" id="view-name"></h2>
+      <div class="detail-row">
+        <span class="detail-label">Username</span>
+        <span class="detail-value" id="view-username"></span>
+        <button class="btn btn-sm-icon" id="view-copy-username-btn" aria-label="Copy username" title="Copy username">&#x1F4CB;</button>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Password</span>
+        <span class="detail-value" id="view-password">••••••••••</span>
+        <button class="btn btn-sm-icon" id="view-show-btn" aria-label="Show password" title="Show/Hide password">&#x1F441;&#x200D;&#x1F5E8;</button>
+        <button class="btn btn-sm-icon" id="view-copy-pw-btn" aria-label="Copy password" title="Copy password">&#x1F4CB;</button>
+      </div>
+      <div id="view-details" style="margin-top:12px;"></div>
+      <div class="view-actions" style="margin-top:16px;">
+        <button class="btn btn-sm btn-primary" id="view-edit-btn">Edit</button>
+        <button class="btn btn-sm btn-danger" id="view-delete-btn">Delete</button>
+        <button class="btn btn-sm btn-secondary" id="view-back-btn">Back</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirmation -->
+<div id="view-delete-confirm" class="view">
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title">Delete this password?</h2>
+      <p class="text-secondary">This action cannot be undone.</p>
+      <div class="flex gap-2" style="margin-top:16px;">
+        <button class="btn btn-danger" id="delete-confirm-btn" style="flex:1;">Delete</button>
+        <button class="btn btn-secondary" id="delete-cancel-btn" style="flex:1;">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Change Password -->
+<div id="view-change-password" class="view">
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title">Change Master Password</h2>
+      <form id="cp-form" onsubmit="return false;">
+        <div class="form-group">
+          <label for="cp-current">Current Master Password</label>
+          <input type="password" id="cp-current" autocomplete="current-password" aria-label="Current master password">
+        </div>
+        <div class="form-group">
+          <label for="cp-new">New Master Password</label>
+          <input type="password" id="cp-new" autocomplete="new-password" aria-label="New master password">
+        </div>
+        <div class="form-group">
+          <label for="cp-confirm">Confirm New Master Password</label>
+          <input type="password" id="cp-confirm" autocomplete="new-password" aria-label="Confirm new master password">
+        </div>
+        <div id="cp-error" class="warning-box hidden"></div>
+        <div id="cp-success" class="warning-box hidden" style="border-color:var(--success);background:#d1fae5;color:#065f46;">Master password changed successfully.</div>
+        <div class="flex gap-2" style="margin-top:16px;">
+          <button class="btn btn-primary" id="cp-save-btn" type="button" style="flex:1;">Save Changes</button>
+          <button class="btn btn-secondary" id="cp-cancel-btn" type="button" style="flex:1;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Set Password (from Settings) -->
+<div id="view-set-password" class="view">
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title">Set Master Password</h2>
+      <p class="text-secondary mb-4">Set a master password to protect your vault with encryption.</p>
+      <form id="sp-form" onsubmit="return false;">
+        <div class="form-group">
+          <label for="sp-password">Master Password</label>
+          <input type="password" id="sp-password" autocomplete="new-password" aria-label="New master password">
+        </div>
+        <div class="form-group">
+          <label for="sp-confirm">Confirm Master Password</label>
+          <input type="password" id="sp-confirm" autocomplete="new-password" aria-label="Confirm master password">
+        </div>
+        <div id="sp-error" class="warning-box hidden"></div>
+        <div class="flex gap-2" style="margin-top:16px;">
+          <button class="btn btn-primary" id="sp-save-btn" type="button" style="flex:1;">Set Password</button>
+          <button class="btn btn-secondary" id="sp-cancel-btn" type="button" style="flex:1;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Remove Password -->
+<div id="view-remove-password" class="view">
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title">Remove Master Password</h2>
+      <p class="text-secondary mb-4">Your vault will be stored without encryption. Enter your current master password to confirm.</p>
+      <form id="rp-form" onsubmit="return false;">
+        <div class="form-group">
+          <label for="rp-password">Current Master Password</label>
+          <input type="password" id="rp-password" autocomplete="current-password" aria-label="Current master password">
+        </div>
+        <div id="rp-error" class="warning-box hidden"></div>
+        <div class="flex gap-2" style="margin-top:16px;">
+          <button class="btn btn-danger" id="rp-save-btn" type="button" style="flex:1;">Remove Password</button>
+          <button class="btn btn-secondary" id="rp-cancel-btn" type="button" style="flex:1;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Import Confirmation -->
+<div id="view-import-confirm" class="view">
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title">Import Backup</h2>
+      <p class="text-secondary">This will replace all existing data with the backup. This action cannot be undone.</p>
+      <div class="flex gap-2" style="margin-top:16px;">
+        <button class="btn btn-danger" id="import-confirm-btn" style="flex:1;">Import & Replace</button>
+        <button class="btn btn-secondary" id="import-cancel-btn" style="flex:1;">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Password Generator Modal -->
+<div id="password-generator-modal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <h3 class="modal-title">Password Generator</h3>
+    <div class="form-group">
+      <label for="gen-length">Password Length: <span id="gen-length-display">20</span></label>
+      <input type="range" id="gen-length" min="6" max="64" value="20" aria-label="Password length">
+    </div>
+    <div class="gen-options">
+      <label><input type="checkbox" id="gen-upper" checked> Uppercase</label>
+      <label><input type="checkbox" id="gen-lower" checked> Lowercase</label>
+      <label><input type="checkbox" id="gen-numbers" checked> Numbers</label>
+      <label><input type="checkbox" id="gen-symbols" checked> Symbols</label>
+    </div>
+    <div class="form-group">
+      <input type="text" id="gen-preview" readonly aria-label="Generated password preview">
+    </div>
+    <div id="gen-strength" class="strength-badge strength-strong" style="margin-bottom:12px;">Strength: strong</div>
+    <div class="flex gap-2" style="flex-wrap:wrap;">
+      <button class="btn btn-sm btn-primary" id="gen-generate-btn">Generate</button>
+      <button class="btn btn-sm btn-secondary" id="gen-copy-btn">Copy Password</button>
+      <button class="btn btn-sm btn-secondary" id="gen-use-btn">Use This Password</button>
+      <button class="btn btn-sm btn-secondary" id="gen-close-btn">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/crypto.js?v=2"></script>
+<script src="js/database.js?v=2"></script>
+<script src="js/auth.js?v=2"></script>
+<script src="js/password-generator.js?v=2"></script>
+<script src="js/ui.js?v=2"></script>
+<script src="js/app.js?v=2"></script>
+</body>
+</html>
