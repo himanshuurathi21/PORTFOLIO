@@ -1,4 +1,4 @@
-const VALID_SECTIONS = ['hero','about','experience','skills','projects','services','impact','certifications','academics','contact'];
+const VALID_SECTIONS = ['hero','about','experience','skills','projects','impact','certifications','academics','contact'];
 let isTransitioning = false;
 let typingTimeout = null;
 
