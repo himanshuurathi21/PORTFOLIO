@@ -242,23 +242,6 @@ nav a.active { color: var(--primary); background: rgba(0,173,181,0.12); }
     margin-top: 8px;
 }
 
-.hero-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-    margin-top: 8px;
-}
-.hero-stack span {
-    font-size: 0.72rem;
-    padding: 4px 10px;
-    border-radius: 50px;
-    background: rgba(0,173,181,0.08);
-    border: 1px solid rgba(0,173,181,0.2);
-    color: var(--primary);
-    letter-spacing: 0.3px;
-}
-
 /* ============================================
    STATS ROW
    ============================================ */
@@ -1254,3 +1237,72 @@ footer .footer-sub { font-size: 0.75rem; }
 .content-section.active-section, #hero.active-section {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+/* ============================================
+   PROJECT FILTERS + LINKS
+   ============================================ */
+.filter-bar {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 6px 0 22px;
+}
+.filter-btn {
+    background: var(--dark-4);
+    color: var(--text-gray);
+    border: 1px solid var(--border);
+    padding: 7px 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--transition);
+    letter-spacing: 0.3px;
+}
+.filter-btn:hover { color: var(--primary); border-color: rgba(0,173,181,0.3); }
+.filter-btn.active { background: var(--primary); color: var(--dark); border-color: var(--primary); }
+.filter-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+.project-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+.project-links .btn-project { margin-top: 0; }
+
+/* ============================================
+   TESTIMONIALS
+   ============================================ */
+.testi-heading {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 44px 0 4px;
+}
+.testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+.testi-card {
+    background: var(--dark-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.testi-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0,173,181,0.3);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.testi-stars { color: #f59e0b; font-size: 0.72rem; letter-spacing: 2px; }
+.testi-quote { font-size: 0.85rem; color: var(--text-gray); line-height: 1.7; font-style: italic; flex: 1; }
+.testi-name { font-size: 0.85rem; font-weight: 700; color: var(--text-white); }
+.testi-role { font-size: 0.72rem; color: var(--text-muted); margin-top: -8px; }

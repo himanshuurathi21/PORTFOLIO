@@ -1,4 +1,4 @@
-const VALID_SECTIONS = ['hero','about','experience','skills','projects','impact','certifications','academics','contact'];
+const VALID_SECTIONS = ['hero','about','experience','skills','projects','services','impact','certifications','academics','contact'];
 let isTransitioning = false;
 let typingTimeout = null;
 
@@ -105,7 +105,7 @@ function updateActiveNav(sectionId) {
 // ── Animate section items on reveal ─────────
 function animateIn(section) {
     const items = section.querySelectorAll(
-        '.project-card, .skill-group, .contact-card, .timeline-item, .cert-highlight-card, .about-grid, .exp-card, .content-card, .milestone-card'
+        '.project-card, .skill-group, .contact-card, .timeline-item, .cert-highlight-card, .about-grid, .exp-card, .content-card, .milestone-card, .testi-card, .filter-bar'
     );
     items.forEach((el, i) => {
         el.style.opacity = '0';
@@ -436,6 +436,29 @@ function animateStats() {
                 counter.textContent = current;
             }
         }, 40);
+    });
+}
+
+// ── Project filtering ────────────────────────
+function filterProjects(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    const cards = document.querySelectorAll('#projectGrid .project-card');
+    let visible = 0;
+    cards.forEach((card, i) => {
+        const show = category === 'all' || card.dataset.category === category;
+        if (show) {
+            card.style.display = '';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, visible * 80);
+            visible++;
+        } else {
+            card.style.display = 'none';
+        }
     });
 }
 
