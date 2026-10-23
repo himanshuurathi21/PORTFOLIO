@@ -1,15 +1,20 @@
 {
   "name": "Himanshu Rathi | Portfolio",
   "short_name": "HR Portfolio",
-  "description": "IT student at MIT AOE Pune building AI web tools. 6 projects, hackathons, and counting.",
+  "description": "IT student at MIT AOE Pune building full-stack and AI web tools. 6 projects, 3 hackathons, and counting.",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0d0d0d",
   "theme_color": "#0d0d0d",
   "icons": [
     {
-      "src": "assets/images/profile.jpg",
-      "sizes": "any",
+      "src": "assets/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/icon-512.jpg",
+      "sizes": "512x512",
       "type": "image/jpeg"
     }
   ]
