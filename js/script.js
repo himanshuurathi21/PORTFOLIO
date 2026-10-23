@@ -67,6 +67,7 @@ function switchSection(sectionId) {
     if (sectionId === 'hero') {
         activeSection.style.display = 'flex';
         if (!typingDone && !typingTimeout) typing();
+        typeFloatCards();
         animateStats();
         resumeParticles();
     } else {
@@ -99,6 +100,11 @@ function updateActiveNav(sectionId) {
             a.classList.add('active');
             a.setAttribute('aria-current', 'page');
         }
+    });
+    document.querySelectorAll('.dot-nav .dot').forEach(d => {
+        const isActive = d.dataset.section === sectionId;
+        d.classList.toggle('active', isActive);
+        d.setAttribute('aria-current', isActive ? 'true' : 'false');
     });
 }
 
@@ -142,6 +148,63 @@ function typing() {
         }
     }
     typeNext();
+}
+
+// ── Floating cards typing animation ──────────
+let cardsTypingStarted = false;
+
+function typeFloatCards() {
+    const wrap = document.querySelector('.hero-side-cards');
+    if (!wrap || cardsTypingStarted) return;
+    cardsTypingStarted = true;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const data = Array.from(wrap.querySelectorAll('.float-card')).map(card => {
+        const title = card.querySelector('.fc-title');
+        const sub = card.querySelector('.fc-sub');
+        return {
+            card,
+            title,
+            sub,
+            titleText: title.textContent.trim(),
+            subText: sub.textContent.trim()
+        };
+    });
+
+    wrap.classList.add('typing-mode');
+    data.forEach(d => {
+        d.title.textContent = '';
+        d.sub.textContent = '';
+    });
+
+    let finished = 0;
+    data.forEach((d, i) => {
+        setTimeout(() => {
+            d.card.classList.add('typing-start');
+            let ci = 0;
+            d.title.classList.add('typing');
+            const titleTimer = setInterval(() => {
+                ci++;
+                d.title.textContent = d.titleText.slice(0, ci);
+                if (ci >= d.titleText.length) {
+                    clearInterval(titleTimer);
+                    d.title.classList.remove('typing');
+                    let si = 0;
+                    d.sub.classList.add('typing');
+                    const subTimer = setInterval(() => {
+                        si++;
+                        d.sub.textContent = d.subText.slice(0, si);
+                        if (si >= d.subText.length) {
+                            clearInterval(subTimer);
+                            d.sub.classList.remove('typing');
+                            finished++;
+                            if (finished === data.length) wrap.classList.remove('typing-mode');
+                        }
+                    }, 30);
+                }
+            }, 45);
+        }, 400 + i * 600);
+    });
 }
 
 // ── Certification toggle ──────────────────────
@@ -226,6 +289,44 @@ document.addEventListener('DOMContentLoaded', () => {
         backToTop.addEventListener('click', () => showSection('hero'));
     }
 
+    // Footer year
+    const footerYear = document.getElementById('footerYear');
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+    // Contact form success message after FormSubmit redirect
+    const params = new URLSearchParams(location.search);
+    if (params.get('sent') === '1') {
+        const status = document.getElementById('formStatus');
+        if (status) {
+            status.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
+            status.hidden = false;
+            status.classList.add('success');
+        }
+        params.delete('sent');
+        const cleanQuery = params.toString();
+        try {
+            history.replaceState(null, '', location.pathname + (cleanQuery ? '?' + cleanQuery : '') + location.hash);
+        } catch (e) { /* file:// URLs may disallow history updates */ }
+    }
+
+    // Contact form submit feedback (prevent double submits)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        contactForm.addEventListener('submit', () => {
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>';
+            }
+        });
+        window.addEventListener('pageshow', () => {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane" aria-hidden="true"></i>';
+            }
+        });
+    }
+
     // Active nav link highlight on click (any nav link)
     document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', function () {
@@ -241,10 +342,27 @@ document.addEventListener('DOMContentLoaded', () => {
         showSection(isValidSection(id) ? id : 'hero');
     });
 
-    // ── Section navigation arrows ──────────────
-    const prevBtn = document.getElementById('prevSection');
-    const nextBtn = document.getElementById('nextSection');
+    // ── Section dot navigation ─────────────────
+    const SECTION_LABELS = {
+        hero: 'Home', about: 'About', experience: 'Experience', skills: 'Skills',
+        projects: 'Projects', impact: 'Impact', certifications: 'Certifications',
+        academics: 'Academics', contact: 'Contact'
+    };
+    const dotNav = document.getElementById('dotNav');
+    if (dotNav) {
+        VALID_SECTIONS.forEach(id => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'dot';
+            dot.dataset.section = id;
+            dot.title = SECTION_LABELS[id];
+            dot.setAttribute('aria-label', 'Go to ' + SECTION_LABELS[id]);
+            dot.addEventListener('click', () => showSection(id));
+            dotNav.appendChild(dot);
+        });
+    }
 
+    // ── Keyboard section navigation ────────────
     function getCurrentSectionIndex() {
         const hash = location.hash.slice(1) || 'hero';
         const idx = VALID_SECTIONS.indexOf(hash);
@@ -255,11 +373,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const idx = getCurrentSectionIndex();
         const next = (idx + direction + VALID_SECTIONS.length) % VALID_SECTIONS.length;
         showSection(VALID_SECTIONS[next]);
-    }
-
-    if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', () => navigateSection(-1));
-        nextBtn.addEventListener('click', () => navigateSection(1));
     }
 
     document.addEventListener('keydown', (e) => {
@@ -425,15 +538,16 @@ function animateStats() {
     counters.forEach(counter => {
         const target = parseInt(counter.dataset.target, 10);
         if (isNaN(target)) return;
+        const suffix = counter.dataset.suffix || '';
         let current = 0;
         const step = Math.max(1, Math.ceil(target / 30));
         const interval = setInterval(() => {
             current += step;
             if (current >= target) {
-                counter.textContent = target;
+                counter.textContent = target + suffix;
                 clearInterval(interval);
             } else {
-                counter.textContent = current;
+                counter.textContent = current + suffix;
             }
         }, 40);
     });
