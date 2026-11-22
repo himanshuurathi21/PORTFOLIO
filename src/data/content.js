@@ -8,6 +8,7 @@ export const socials = {
   resume: '/assets/resume.html',
   resumeVP: '/assets/resume-VP.html',
   resumePdf: '/assets/Himanshu-Rathi-Resume.pdf',
+  resumeSite: 'https://leafy-kleicha-48d2ef.netlify.app/',
 };
 
 export const navLinks = [
