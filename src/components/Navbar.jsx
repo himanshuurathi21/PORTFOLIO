@@ -118,10 +118,9 @@ export default function Navbar({ theme, onToggleTheme }) {
             <ThemeToggle theme={theme} onToggle={onToggleTheme} />
             <a
               className="nav-resume"
-              href={socials.resumeSite}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open Himanshu Rathi's resume website"
+              href={socials.resumePdf}
+              download="Himanshu-Rathi-Resume.pdf"
+              aria-label="Download Himanshu Rathi's resume as a PDF"
             >
               <span>Resume</span>
               <ArrowUpRight size={15} strokeWidth={2.2} aria-hidden="true" />
