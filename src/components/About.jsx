@@ -51,7 +51,7 @@ export default function About() {
               </span>
             </div>
             <h3>MIT Academy of Engineering</h3>
-            <p className="bento-sub">B.Tech — Information Technology</p>
+            <p className="bento-sub">B.Tech - Information Technology</p>
             <div className="edu-numbers">
               <div>
                 <strong>8.10</strong>
@@ -65,7 +65,7 @@ export default function About() {
             </div>
             <div className="bento-tags">
               <span>Pune, Maharashtra</span>
-              <span>2025 — 2029</span>
+              <span>2025 - 2029</span>
             </div>
             <span className="bento-watermark" aria-hidden="true">
               MIT
@@ -81,14 +81,14 @@ export default function About() {
             </div>
             <h3>I learn by building things that ship.</h3>
             <p>
-              Alongside college, I build tech projects — from loyalty systems and skill-bartering
+              Alongside college, I build tech projects - from loyalty systems and skill-bartering
               platforms to AI business dashboards. I&apos;ve participated in{' '}
               <strong>4 hackathons</strong> and earned <strong>15 certifications</strong> from
               IBM, Cisco, Anthropic and Reliance Foundation.
             </p>
             <div className="dev-stats">
               <div>
-                <strong>08</strong>
+                <strong>07</strong>
                 <span>projects built</span>
               </div>
               <div>
@@ -152,7 +152,7 @@ export default function About() {
               </div>
             </div>
             <p>
-              Leading the Executive Council of MIT&apos;s IT Department — branding, digital
+              Leading the Executive Council of MIT&apos;s IT Department - branding, digital
               outreach, events, and a 24-hour hackathon with a 32-member team.
             </p>
             <div className="bento-tags">
@@ -170,7 +170,7 @@ export default function About() {
               </span>
             </div>
             <h3>Fanfeed Digital</h3>
-            <p className="bento-sub">Social Media Manager · Apr 2026 — Present</p>
+            <p className="bento-sub">Social Media Manager · Apr 2026 - Present</p>
             <p>
               Building content strategy and campaigns for a sports engagement platform. A collab
               reel with IPL founder <strong>Lalit Modi</strong> crossed{' '}
@@ -195,7 +195,7 @@ export default function About() {
               </h3>
               <p>
                 Outside work, I&apos;m into dance, public speaking, storytelling, and shayri. I
-                believe great content is not just about creativity — it&apos;s about solving
+                believe great content is not just about creativity - it&apos;s about solving
                 problems, creating value, and building genuine connections.
               </p>
               <div className="interest-chips" role="list" aria-label="Personal interests">

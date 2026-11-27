@@ -38,8 +38,8 @@ export default function Footer() {
             <a href={socials.emailCompose} target="_blank" rel="noopener noreferrer">
               {socials.email}
             </a>
-            <a href={socials.resumePdf} download="Himanshu-Rathi-Resume.pdf">
-              Download resume <ArrowUpRight size={14} aria-hidden="true" />
+            <a href={socials.resume} target="_blank" rel="noopener noreferrer">
+              View resume <ArrowUpRight size={14} aria-hidden="true" />
             </a>
             <SocialLinks />
           </div>

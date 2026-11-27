@@ -1,4 +1,4 @@
-# Himanshu Rathi — Portfolio
+# Himanshu Rathi - Portfolio
 
 A cinematic, interactive personal brand site for Himanshu Rathi: developer, content creator and community leader.
 
@@ -49,29 +49,34 @@ The canonical URL in `index.html`, `robots.txt` and `sitemap.xml` is
 
 All copy and links live in `src/data/`:
 
-- `content.js` — profile, navigation, social links, impact statistics, experience and education
-- `projects.js` — project case studies, filters, editorial covers, screenshot galleries and live links
-- `skills.js` — skill groups and proof points
-- `credentials.js` — certifications, hackathon records and certificate links
+- `content.js` - profile, navigation, social links, impact statistics, experience and education
+- `projects.js` - project case studies, filters, editorial covers, screenshot galleries and live links
+- `skills.js` - skill groups and proof points
+- `credentials.js` - certifications, hackathon records and certificate links
 
 Sections are composed in `src/App.jsx`; individual sections are in `src/components/`.
 
 ## Assets
 
-- `public/assets/images/profile.jpg` — hero portrait
-- `public/assets/images/profile-avatar.jpg` — square portrait used in the HTML resume
-- `public/assets/images/projects/` — editorial project covers and real screenshots
-- `public/assets/images/og-cover.jpg` — social sharing image (1200 × 630)
-- `public/assets/Himanshu-Rathi-Resume.pdf` — downloadable resume
-- `public/assets/certificates/` — certificate images and PDFs
-- `public/favicon.svg`, `public/manifest.webmanifest` — browser/PWA metadata
-- `source-assets/` — original source files kept out of the deployed bundle
+- `public/assets/images/profile.jpg` - hero portrait
+- `public/assets/images/profile-avatar.jpg` - square portrait used in the HTML resume
+- `public/assets/images/projects/` - editorial project covers and real screenshots
+- `public/assets/images/og-cover.jpg` - social sharing image (1200 × 630)
+- `public/assets/Himanshu-Rathi-Resume.pdf` - PDF resume kept for direct sharing
+- `public/assets/resume.html` - HTML resume opened by the site's resume buttons
+- `public/assets/resume-VP.html` - alternate HTML resume variant
+- `public/assets/certificates/` - certificate images and PDFs
+- `public/favicon.svg`, `public/manifest.webmanifest` - browser/PWA metadata
+- `source-assets/` - original source files kept out of the deployed bundle
 
 ## Contact form
 
-The form posts to FormSubmit at `https://formsubmit.co/rathihimanshuu@gmail.com`. FormSubmit
-requires a one-time email confirmation on the first submission. The form returns to
-`/?sent=1#contact` and shows a success message.
+The form posts to FormSubmit's AJAX endpoint at
+`https://formsubmit.co/ajax/rathihimanshuu@gmail.com` and shows inline success and error
+messages without leaving the page. FormSubmit requires a one-time activation: the first
+submission sends an activation email to the inbox, and the form only starts delivering
+messages after the "Activate Form" link in that email is clicked. Until then, the site
+shows a setup notice with a direct email fallback.
 
 ## Notes
 

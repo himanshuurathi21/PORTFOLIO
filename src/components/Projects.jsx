@@ -12,7 +12,8 @@ const ease = [0.22, 1, 0.36, 1];
 
 function ProjectCard({ project, onOpen }) {
   const primaryLink = project.links.live || project.links.demo;
-  const primaryLabel = project.links.live ? 'Live build' : 'Request demo';
+  const isExeDownload = project.links.live && project.links.live.endsWith('.exe');
+  const primaryLabel = isExeDownload ? 'Download EXE' : project.links.live ? 'Live build' : 'Request demo';
 
   return (
     <motion.article
@@ -71,7 +72,7 @@ function ProjectCard({ project, onOpen }) {
                 href={primaryLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${primaryLabel} — ${project.title}`}
+                aria-label={`${primaryLabel} - ${project.title}`}
               >
                 {project.links.live ? (
                   <ArrowUpRight size={15} strokeWidth={2.2} aria-hidden="true" />
@@ -135,7 +136,7 @@ export default function Projects() {
               Proof, not <em>promises.</em>
             </>
           }
-          description="Eight builds across full-stack products, AI prototypes, desktop software and event web apps. Real screens, working links, honest scope."
+          description="Seven builds across full-stack products, AI prototypes, desktop software and web apps. Real screens, honest scope."
         />
 
         <div className="projects-toolbar">

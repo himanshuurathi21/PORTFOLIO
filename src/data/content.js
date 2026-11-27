@@ -26,7 +26,7 @@ export const roles = ['Developer', 'Creator', 'Leader', 'Storyteller', 'Builder'
 export const heroBadges = [
   { label: 'Vice President', meta: 'CIPHER Association', accent: 'purple', position: 'top-left' },
   { label: '400K+', meta: 'content impressions', accent: 'lime', position: 'top-right' },
-  { label: '8 builds', meta: 'shipped & counting', accent: 'cyan', position: 'bottom-left' },
+  { label: '7 builds', meta: 'shipped & counting', accent: 'cyan', position: 'bottom-left' },
   { label: '15 certs', meta: 'IBM · Anthropic · Cisco · Reliance', accent: 'coral', position: 'bottom-right' },
 ];
 
@@ -70,7 +70,7 @@ export const stats = [
     accent: 'cyan',
   },
   {
-    value: 8,
+    value: 7,
     suffix: '',
     label: 'Projects shipped',
     note: 'Full-stack · AI · Desktop · Web',
@@ -116,7 +116,7 @@ export const testimonials = [
   },
   {
     quote:
-      'Built a billing and inventory system our pharmacy actually uses daily — expiry alerts alone saved us real money.',
+      'Built a billing and inventory system our pharmacy actually uses daily - expiry alerts alone saved us real money.',
     name: 'Pharmacy Owner',
     role: "RATHI's MEDISOFT User",
   },
@@ -124,9 +124,9 @@ export const testimonials = [
 
 export const experiences = [
   {
-    org: 'CIPHER Association — MIT AOE',
+    org: 'CIPHER Association - MIT AOE',
     role: 'Vice President',
-    date: 'Feb 2026 — Present',
+    date: 'Feb 2026 - Present',
     current: true,
     accent: 'purple',
     description:
@@ -144,7 +144,7 @@ export const experiences = [
   {
     org: 'Fanfeed Digital Pvt Ltd',
     role: 'Social Media Manager',
-    date: 'Apr 2026 — Present',
+    date: 'Apr 2026 - Present',
     current: true,
     accent: 'coral',
     description:
@@ -161,9 +161,9 @@ export const experiences = [
     tags: ['Content Strategy', 'Campaign Management', 'Sports Marketing', 'Reel Production'],
   },
   {
-    org: 'GDG Campus Body — Google Developer Club',
+    org: 'GDG Campus Body - Google Developer Club',
     role: 'Social Media Member',
-    date: 'Oct 2026 — Present',
+    date: 'Oct 2026 - Present',
     current: true,
     accent: 'cyan',
     description:
@@ -176,9 +176,9 @@ export const experiences = [
     tags: ['Social Media', 'Content Creation', 'Community Outreach', 'Google Developer Club'],
   },
   {
-    org: "GOONJ — MITAOE's Official Music Club",
+    org: "GOONJ - MITAOE's Official Music Club",
     role: 'Social Media Head',
-    date: 'Oct 2026 — Present',
+    date: 'Oct 2026 - Present',
     current: true,
     accent: 'lime',
     description:
@@ -191,7 +191,7 @@ export const experiences = [
     tags: ['Social Media Strategy', 'Branding', 'Content Creation', 'Event Promotions'],
   },
   {
-    org: 'Cisco Networking Academy — AICTE',
+    org: 'Cisco Networking Academy - AICTE',
     role: 'Online Internship',
     date: 'College Semester',
     current: false,

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { ArrowDown, ArrowUpRight, Download, MapPin } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, MapPin } from 'lucide-react';
 import { heroBadges, roles, socials } from '../data/content';
 import Magnetic from './Magnetic';
 import Marquee from './Marquee';
@@ -152,11 +152,12 @@ export default function Hero() {
             <Magnetic>
               <a
                 className="btn btn-secondary"
-                href={socials.resumePdf}
-                download="Himanshu-Rathi-Resume.pdf"
+                href={socials.resume}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Download resume
-                <Download size={16} strokeWidth={2} aria-hidden="true" />
+                View resume
+                <ArrowUpRight size={16} strokeWidth={2} aria-hidden="true" />
               </a>
             </Magnetic>
           </motion.div>
@@ -171,7 +172,7 @@ export default function Hero() {
             <span className="hero-meta-rule" aria-hidden="true" />
             <div className="hero-metrics" role="group" aria-label="Quick facts">
               <span>
-                <strong>8</strong> projects
+                <strong>7</strong> projects
               </span>
               <span>
                 <strong>15</strong> certifications

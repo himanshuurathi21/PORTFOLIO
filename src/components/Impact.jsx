@@ -35,7 +35,7 @@ export default function Impact() {
               Momentum, in <em>numbers.</em>
             </>
           }
-          description="Receipts from building in public — content that travelled, credentials earned, and rooms I helped move."
+          description="Receipts from building in public - content that travelled, credentials earned, and rooms I helped move."
         />
 
         <div className="stats-grid">

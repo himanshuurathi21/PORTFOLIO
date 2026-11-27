@@ -56,7 +56,7 @@ export default function Skills() {
                 Tools for making <em>ideas real.</em>
               </>
             }
-            description="No logo walls. Just the languages, frameworks, and platforms I actually use — with receipts."
+            description="No logo walls. Just the languages, frameworks, and platforms I actually use - with receipts."
           />
           <Reveal className="skills-legend" delay={0.1}>
             <span className="skills-legend-label">Proficiency</span>
@@ -100,14 +100,14 @@ export default function Skills() {
                         key={skill.name}
                         onClick={() => selectSkill(group, skill)}
                         aria-pressed={isActive}
-                        title={`${skill.name}: ${skill.level} — ${skill.proof}`}
+                        title={`${skill.name}: ${skill.level} - ${skill.proof}`}
                       >
                         <span
                           className={`level-dot ${levelClass[skill.level] || 'is-familiar'}`}
                           aria-hidden="true"
                         />
                         {skill.name}
-                        <span className="sr-only"> — {skill.level}</span>
+                        <span className="sr-only"> - {skill.level}</span>
                       </button>
                     );
                   })}

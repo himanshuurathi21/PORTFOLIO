@@ -37,7 +37,7 @@ const certIconMap = {
 
 function CertCard({ cert, group, onPreview }) {
   const Icon = certIconMap[cert.icon] || Award;
-  const label = `${group.label} — ${cert.name}`;
+  const label = `${group.label} - ${cert.name}`;
 
   const content = (
     <>
@@ -119,7 +119,7 @@ export default function Education() {
               Learning in public. <em>Certified.</em>
             </>
           }
-          description="A degree in progress, three academic signals, 15 certifications and four hackathons — all earned in parallel with real projects."
+          description="A degree in progress, three academic signals, 15 certifications and four hackathons - all earned in parallel with real projects."
         />
 
         <div className="education-grid">

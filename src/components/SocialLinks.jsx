@@ -39,7 +39,7 @@ export default function SocialLinks({ className = '', labels = false, size = 18 
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={labels ? undefined : `${label} — ${handle} (opens in a new tab)`}
+          aria-label={labels ? undefined : `${label} - ${handle} (opens in a new tab)`}
         >
           <span className="social-link-icon">
             <Icon size={size} strokeWidth={1.8} aria-hidden="true" />

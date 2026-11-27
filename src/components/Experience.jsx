@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'motion/react';
-import { ArrowUpRight, Check, Download, Sparkles, Star } from 'lucide-react';
+import { ArrowUpRight, Check, Sparkles, Star } from 'lucide-react';
 import { experiences, socials } from '../data/content';
 import SectionHeading from './SectionHeading';
 import Reveal from './Reveal';
@@ -53,23 +53,24 @@ export default function Experience() {
                 ))}
               </ul>
               <p>
-                Leading communities, shipping content, and staying close to the code — all at
+                Leading communities, shipping content, and staying close to the code - all at
                 once.
               </p>
               <a
                 className="text-link"
-                href={socials.resumePdf}
-                download="Himanshu-Rathi-Resume.pdf"
+                href={socials.resume}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Download full resume
-                <Download size={15} strokeWidth={2} aria-hidden="true" />
+                View full resume
+                <ArrowUpRight size={15} strokeWidth={2} aria-hidden="true" />
               </a>
             </div>
 
             <div className="experience-aside-note">
               <Star size={16} strokeWidth={1.8} aria-hidden="true" />
               <p>
-                &ldquo;Still figuring out my exact path — startup, freelance, or something else —
+                &ldquo;Still figuring out my exact path - startup, freelance, or something else -
                 but I know I want to build, create, and make an impact.&rdquo;
               </p>
             </div>

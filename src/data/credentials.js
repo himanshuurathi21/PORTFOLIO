@@ -1,7 +1,7 @@
 export const academic = {
   school: 'MIT Academy of Engineering',
-  degree: 'B.Tech — Information Technology',
-  period: '2025 — 2029',
+  degree: 'B.Tech - Information Technology',
+  period: '2025 - 2029',
   cgpa: '8.10',
   location: 'Alandi, Pune',
   status: 'Current',
@@ -55,13 +55,13 @@ export const certGroups = [
         icon: 'sparkles',
       },
       {
-        name: 'AI Fluency — Students',
+        name: 'AI Fluency - Students',
         href: '/assets/certificates/ai-fluency-students.jpg',
         format: 'image',
         icon: 'brain',
       },
       {
-        name: 'AI Fluency — Nonprofits',
+        name: 'AI Fluency - Nonprofits',
         href: '/assets/certificates/ai-fluency-nonprofits.jpg',
         format: 'image',
         icon: 'heart',
@@ -118,7 +118,7 @@ export const certGroups = [
         icon: 'brain',
       },
       {
-        name: 'Apply AI — Analyze Customer Reviews',
+        name: 'Apply AI - Analyze Customer Reviews',
         href: '/assets/certificates/Apply_AI_Analyze_Customer_Reviews.pdf',
         format: 'pdf',
         icon: 'sparkles',
@@ -130,10 +130,10 @@ export const certGroups = [
     label: 'Reliance Foundation',
     count: 1,
     accent: 'reliance',
-    description: 'Leadership programme under Youth 4 Impact — Towards a Viksit Bharat.',
+    description: 'Leadership programme under Youth 4 Impact - Towards a Viksit Bharat.',
     certs: [
       {
-        name: 'Youth 4 Impact — Leadership Programme',
+        name: 'Youth 4 Impact - Leadership Programme',
         href: '/assets/certificates/Youth4Impact-Leadership-Programme.pdf',
         format: 'pdf',
         icon: 'award',

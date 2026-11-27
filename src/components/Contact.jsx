@@ -1,17 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
-import { Check, Copy, Mail, Send, Sparkles } from 'lucide-react';
+import { AlertCircle, Check, Copy, Mail, Send, Sparkles } from 'lucide-react';
 import { socials } from '../data/content';
 import SectionHeading from './SectionHeading';
 import Reveal from './Reveal';
 import SocialLinks from './SocialLinks';
 
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/rathihimanshuu@gmail.com';
+
 export default function Contact() {
   const [copied, setCopied] = useState(false);
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const copyTimer = useRef(null);
-  const submitTimer = useRef(null);
   const successRef = useRef(null);
+  const formRef = useRef(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -38,19 +41,9 @@ export default function Contact() {
     successRef.current.scrollIntoView({ block: 'center' });
   }, [sent]);
 
-  useEffect(() => {
-    const onPageShow = () => {
-      window.clearTimeout(submitTimer.current);
-      setSubmitting(false);
-    };
-    window.addEventListener('pageshow', onPageShow);
-    return () => window.removeEventListener('pageshow', onPageShow);
-  }, []);
-
   useEffect(
     () => () => {
       window.clearTimeout(copyTimer.current);
-      window.clearTimeout(submitTimer.current);
     },
     [],
   );
@@ -66,20 +59,59 @@ export default function Contact() {
     }
   };
 
-  const formNext =
-    typeof window !== 'undefined'
-      ? `${window.location.origin}/?sent=1#contact`
-      : 'https://himanshurathiportfolio.netlify.app/?sent=1#contact';
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (submitting) return;
 
-  const handleSubmit = (event) => {
-    if (submitting) {
-      event.preventDefault();
-      return;
-    }
+    const form = event.currentTarget;
+    const payload = Object.fromEntries(new FormData(form).entries());
 
     setSubmitting(true);
-    window.clearTimeout(submitTimer.current);
-    submitTimer.current = window.setTimeout(() => setSubmitting(false), 15000);
+    setError('');
+    setSent(false);
+
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 90000);
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+
+      const result = await response.json().catch(() => ({}));
+      const failed =
+        !response.ok || result.success === false || result.success === 'false';
+
+      if (failed) {
+        const message = String(result.message || '');
+        if (/activat/i.test(message)) {
+          setError(
+            'One-time setup needed: the form service sent an activation link to rathihimanshuu@gmail.com. Open that email and click "Activate Form", then send your message again. You can also email me directly.',
+          );
+        } else {
+          setError(
+            'The form could not send your message right now. Please try again, or email me directly at rathihimanshuu@gmail.com.',
+          );
+        }
+        return;
+      }
+
+      form.reset();
+      setSent(true);
+    } catch {
+      setError(
+        'The form could not send your message right now. Please try again, or email me directly at rathihimanshuu@gmail.com.',
+      );
+    } finally {
+      window.clearTimeout(timeout);
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -87,7 +119,6 @@ export default function Contact() {
       <div className="contact-atmosphere" aria-hidden="true">
         <span className="contact-glow" />
         <span className="contact-asterisk">✳</span>
-        <span className="contact-grid-lines" />
       </div>
 
       <div className="container contact-inner">
@@ -103,7 +134,7 @@ export default function Contact() {
               Let&apos;s make it <span className="contact-highlight">happen.</span>
             </>
           }
-          description="A project, a role, a collaboration, or just a good conversation — my inbox is open."
+          description="A project, a role, a collaboration, or just a good conversation - my inbox is open."
         />
 
         <div className="contact-layout">
@@ -114,7 +145,7 @@ export default function Contact() {
                 Available for work
               </span>
               <p>
-                Open to internships &amp; collaborations. Usually replies within 12–24 hours.
+                Open to internships &amp; collaborations. Usually replies within 12-24 hours.
               </p>
             </div>
 
@@ -149,7 +180,7 @@ export default function Contact() {
 
             <div className="contact-quote">
               <Sparkles size={17} strokeWidth={1.7} aria-hidden="true" />
-              <p>Whether it&apos;s code, content or community — let&apos;s make something worth sharing.</p>
+              <p>Whether it&apos;s code, content or community - let&apos;s make something worth sharing.</p>
             </div>
           </Reveal>
 
@@ -166,11 +197,17 @@ export default function Contact() {
               </p>
             ) : null}
 
+            {error ? (
+              <p className="form-error" role="alert">
+                <AlertCircle size={16} strokeWidth={2.2} aria-hidden="true" />
+                {error}
+              </p>
+            ) : null}
+
             <form
               className="contact-form"
               id="contactForm"
-              action="https://formsubmit.co/rathihimanshuu@gmail.com"
-              method="POST"
+              ref={formRef}
               aria-labelledby="contact-form-title"
               aria-busy={submitting}
               onSubmit={handleSubmit}
@@ -178,7 +215,6 @@ export default function Contact() {
               <input type="hidden" name="_subject" value="New message from your portfolio" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_next" value={formNext} />
               <input
                 type="hidden"
                 name="_blacklist"

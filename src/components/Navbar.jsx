@@ -90,7 +90,7 @@ export default function Navbar({ theme, onToggleTheme }) {
       <header className={`site-header ${scrolled ? 'is-scrolled' : ''} ${menuOpen ? 'is-menu-open' : ''}`.trim()}>
         <motion.div className="scroll-progress" style={{ scaleX: progressX }} aria-hidden="true" />
         <div className="container nav-shell">
-          <a className="brand" href="#home" aria-label="Himanshu Rathi — home" onClick={closeMenu}>
+          <a className="brand" href="#home" aria-label="Himanshu Rathi - home" onClick={closeMenu}>
             <span className="brand-mark" aria-hidden="true">
               HR
               <span className="brand-star">✦</span>
@@ -118,9 +118,10 @@ export default function Navbar({ theme, onToggleTheme }) {
             <ThemeToggle theme={theme} onToggle={onToggleTheme} />
             <a
               className="nav-resume"
-              href={socials.resumePdf}
-              download="Himanshu-Rathi-Resume.pdf"
-              aria-label="Download Himanshu Rathi's resume as a PDF"
+              href={socials.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Himanshu Rathi's resume in a new tab"
             >
               <span>Resume</span>
               <ArrowUpRight size={15} strokeWidth={2.2} aria-hidden="true" />
@@ -179,11 +180,12 @@ export default function Navbar({ theme, onToggleTheme }) {
               <div className="mobile-menu-footer">
                 <a
                   className="btn btn-primary mobile-resume"
-                  href={socials.resumePdf}
-                  download="Himanshu-Rathi-Resume.pdf"
+                  href={socials.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={closeMenu}
                 >
-                  Download resume
+                  View resume
                   <ArrowUpRight size={17} aria-hidden="true" />
                 </a>
                 <div className="mobile-menu-contact">
